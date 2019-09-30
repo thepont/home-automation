@@ -14,8 +14,31 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 
+# netgear_lte:
+#   - host: IP_ADDRESS
+#     password: SECRET
+#     notify:
+#       - name: sms
+#         recipient: "+15105550123"
+#     sensor:
+#       monitored_conditions:
+#         - usage
+#         - sms
+#     binary_sensor:
+#       monitored_conditions:
+#         - wire_connected
+#         - mobile_connected
+asuswrt:
+  host: 192.168.1.1
+  username: admin
+  password: !secret asus_secret
 media_player:
   - platform: denonavr
     host: 192.168.1.3
     name: Marantz NA7004
-    show_all_sources: true
+    show_all_sources: false
+  - platform: spotify
+    client_id: !secret spotify_client_id
+    client_secret: !secret spotify_client_secret
+    aliases:
+        abc12795a9819e6627edd2b5f632907d663e8707e474c3def456: 'Lounge'
