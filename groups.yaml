@@ -1,0 +1,6 @@
+group:
+  lounge:
+    name: Lounge
+    entities:
+      - media_player.marantz_na7004
+      - media_plaer.spotify
