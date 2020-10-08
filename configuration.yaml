@@ -12,7 +12,7 @@ ifttt:
   key: 8fMW8JhbcmUTHrQtgYIeE
 
 group: !include groups.yaml
-automation: !include automations.yaml
+# automation: !include automations.yaml
 script: !include scripts.yaml
 frontend:
   themes: !include themes.yaml
@@ -57,7 +57,7 @@ device_tracker:
     consider_home: 180
     new_device_defaults:
       track_new_devices: true
-      hide_if_away: false
+    hide_if_away: false
 media_player:
   - platform: denonavr
     host: 192.168.1.3
