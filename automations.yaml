@@ -1,1 +1,23 @@
-[]
+
+- alias: Startup Notification
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    service: ifttt.trigger
+    data: {"event":"HassIOUp", "value1":"Started HASSIO"}
+- alias: Grobok Notification
+  trigger:
+    platform: vacuum.rockrobo
+    event: 
+# - alias: Push command based on sensor
+#     trigger:
+#       - platform: state
+#         entity_id: sensor.sensor
+#     action:
+#       service: vacuum.send_command
+#       data:
+#         entity_id: 'vacuum.vacuum_entity'
+#         command: 'custom_command'
+#         params:
+#           - key: value
