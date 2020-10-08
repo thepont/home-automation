@@ -36,7 +36,7 @@ vacuum:
     name: GroBok
 air_quality:
   - platform: xiaomi_miio
-    host: 192.168.1.7
+    host: 192.168.1.15
     token: !secret air_token
     name: AirPure
 
