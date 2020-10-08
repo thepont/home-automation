@@ -34,7 +34,7 @@ vacuum:
     host: 192.168.1.6
     token: !secret gro_bok_token
     name: GroBok
-air_token:
+air_quality:
   - platform: xiaomi_miio
     host: 192.168.1.7
     token: !secret air_token
