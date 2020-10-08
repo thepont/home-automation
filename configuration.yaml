@@ -10,18 +10,18 @@ tts:
   - platform: google_translate
 ifttt:
   key: 8fMW8JhbcmUTHrQtgYIeE
-lovelace:
-  mode: yaml
-title: My Awesome Home
-views:
-    # View tab title.
-  - title: Example
-    cards:
-        # The markdown card will render markdown text.
-      - type: markdown
-        title: Lovelace
-        content: >
-          Welcome to your **Lovelace UI**.
+# lovelace:
+#   mode: yaml
+# title: My Awesome Home
+# views:
+#     # View tab title.
+#   - title: Example
+#     cards:
+#         # The markdown card will render markdown text.
+#       - type: markdown
+#         title: Lovelace
+#         content: >
+#           Welcome to your **Lovelace UI**.
 
 group: !include groups.yaml
 automation: !include automations.yaml
