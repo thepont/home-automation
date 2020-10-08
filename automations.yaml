@@ -6,10 +6,7 @@
   action:
     service: ifttt.trigger
     data: {"event":"HassIOUp", "value1":"Started HASSIO"}
-- alias: Grobok Notification
-  trigger:
-    platform: vacuum.rockrobo
-    event: 
+
 # - alias: Push command based on sensor
 #     trigger:
 #       - platform: state
