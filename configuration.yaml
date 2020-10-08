@@ -46,12 +46,11 @@ air_quality:
     token: !secret air_token
     name: AirPure
 
-netgear_lte:
-  - host: 10.0.10.1
-    password: !secret modem_password
-    notify:
-      - name: sms
-        recipient: !secret phone_number_paul
+logger:
+  default: warn
+  logs:
+    homeassistant.components.switch.xiaomi_miio: debug
+    miio: debug
 asuswrt:
   host: 192.168.1.1
   username: admin
