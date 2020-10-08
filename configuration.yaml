@@ -34,6 +34,12 @@ vacuum:
     host: 192.168.1.6
     token: !secret gro_bok_token
     name: GroBok
+air_token:
+  - platform: xiaomi_miio
+    host: 192.168.1.7
+    token: !secret air_token
+    name: AirPure
+
 netgear_lte:
   - host: 10.0.10.1
     password: !secret modem_password
