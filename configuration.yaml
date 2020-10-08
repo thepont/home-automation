@@ -359,8 +359,8 @@ sensor:
       - wind_spd_kmh
       - wind_spd_kt
   - platform: bom
-    station: IDV60801.94871
-    name: bom_frankston
+    station: IDV60901.94872
+    name: bom_ferny_creek
     monitored_conditions:
       - gust_kmh
       - gust_kt
