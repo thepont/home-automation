@@ -31,7 +31,7 @@ speedtestdotnet:
     - upload
 vacuum:
   - platform: xiaomi_miio
-    host: 192.168.1.11
+    host: 192.168.1.6
     token: !secret gro_bok_token
     name: GroBok
 netgear_lte:
