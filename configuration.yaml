@@ -22,13 +22,13 @@ mqtt:
   broker: localhost
   username: mqtt
   password: !secret mqtt_password
-# speedtestdotnet:
-#   scan_interval:
-#     minutes: 300
-#   monitored_conditions:
-#     - ping
-#     - download
-#     - upload
+speedtestdotnet:
+  scan_interval:
+    minutes: 300
+  monitored_conditions:
+    - ping
+    - download
+    - upload
 vacuum:
   - platform: xiaomi_miio
     host: 192.168.1.6
