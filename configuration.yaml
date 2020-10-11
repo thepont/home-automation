@@ -91,17 +91,17 @@ sensor:
       - download
       - download_speed
       - upload_speed
-  - platform: netgear_lte
-    name: netgear_lte_sensors
-    host: 10.0.10.1
-    password: !secret modem_password
-    monitored_conditions:
-      - connection_text
-      - radio_quality
-      - sms
-      - tx_level
-      - usage
-      - current_band
+  # - platform: netgear_lte
+  #   name: netgear_lte_sensors
+  #   host: 10.0.10.1
+  #   password: !secret modem_password
+  #   monitored_conditions:
+  #     - connection_text
+  #     - radio_quality
+  #     - sms
+  #     - tx_level
+  #     - usage
+  #     - current_band
   - platform: bom
     name: bom_moorabbin
     station: IDV60801.94870
