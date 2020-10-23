@@ -17,6 +17,7 @@ script: !include scripts.yaml
 frontend:
   themes: !include themes.yaml
 
+
 mqtt:
   discovery: true
   broker: localhost
@@ -70,6 +71,8 @@ device_tracker:
       track_new_devices: true
     hide_if_away: false
 media_player:
+  - platform: snapcast
+    host: 192.168.1.11
   - platform: denonavr
     host: 192.168.1.3
     name: marantz_na7004
