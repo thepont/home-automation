@@ -70,6 +70,9 @@ device_tracker:
     new_device_defaults:
       track_new_devices: true
     hide_if_away: false
+spotify:
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_client_secret
 media_player:
   - platform: snapcast
     host: 192.168.1.11
@@ -94,17 +97,6 @@ sensor:
       - download
       - download_speed
       - upload_speed
-  # - platform: netgear_lte
-  #   name: netgear_lte_sensors
-  #   host: 10.0.10.1
-  #   password: !secret modem_password
-  #   monitored_conditions:
-  #     - connection_text
-  #     - radio_quality
-  #     - sms
-  #     - tx_level
-  #     - usage
-  #     - current_band
   - platform: bom
     name: bom_moorabbin
     station: IDV60801.94870
