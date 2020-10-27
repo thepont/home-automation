@@ -16,10 +16,10 @@ group: !include groups.yaml
 script: !include scripts.yaml
 frontend:
   themes: !include themes.yaml
-
-resources:
-  - url: /local/mini-media-player-bundle.js?v=1.11.0
-    type: module
+lovelace:
+  resources:
+    - url: /local/mini-media-player-bundle.js?v=1.11.0
+      type: module
 mqtt:
   discovery: true
   broker: localhost
