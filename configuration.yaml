@@ -92,6 +92,8 @@ camera:
     name: MelbouneRadar
     location: Melbourne
 sensor:
+  - platform: amberelectric
+    postcode: "3156"
   - platform: asuswrt
     name: asuswrt_sensors
     monitored_conditions:
