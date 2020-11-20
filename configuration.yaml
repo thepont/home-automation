@@ -77,7 +77,7 @@ spotify:
   client_secret: !secret spotify_client_secret
 media_player:
   - platform: snapcast
-    host: 192.168.1.12
+    host: 192.168.1.15
   - platform: denonavr
     host: 192.168.1.9
     name: marantz_na7004
