@@ -11,6 +11,29 @@ tts:
 ifttt:
   key: 8fMW8JhbcmUTHrQtgYIeE
 
+
+solaredge_modbus:
+    name: 'SolarEdge Modbus'
+    host: 192.168.1.5
+    port: 1502
+    scan_interval: 5 #Optional: time in seconds between readings. Recommended value is at fastest 2-3 sec, default 5
+    read_meter1: false #Optional: set this to true if you have an external modbus meter connected with RS485 for reading self consumption
+
+utility_meter:
+    solar_production_daily:
+      source: sensor.solaredge_lifetime_production
+      cycle: daily
+    solar_production_hourly:
+      source: sensor.solaredge_lifetime_production
+      cycle: hourly
+    solar_production_weekly:
+      source: sensor.solaredge_lifetime_production
+      cycle: weekly
+    solar_production_monthly:
+      source: sensor.solaredge_lifetime_production
+      cycle: monthly
+
+
 group: !include groups.yaml
 # automation: !include automations.yaml
 script: !include scripts.yaml
@@ -18,6 +41,7 @@ frontend:
   themes: !include themes.yaml
 lovelace:
   resources:
+  - platform: spotify
     - url: /local/mini-media-player-bundle.js?v=1.11.0
       type: module
 mqtt:
@@ -92,6 +116,95 @@ camera:
     name: MelbouneRadar
     location: Melbourne
 sensor:
+  - platform: template
+    sensors:
+        solaredge_ac_total_current:
+            friendly_name: "AC Total Current"
+            value_template: "{{ state_attr('sensor.solaredge_modbus', 'ac_total_current') }}"
+            unit_of_measurement: 'A'
+        solaredge_ac_current_phase_a:
+            friendly_name: "AC Current Phase A"
+            value_template: "{{ state_attr('sensor.solaredge_modbus', 'ac_current_phase_a') }}"
+            unit_of_measurement: 'A'
+        solaredge_ac_current_phase_b:
+            friendly_name: "AC Current Phase B"
+            value_template: "{{ state_attr('sensor.solaredge_modbus', 'ac_current_phase_b') }}"
+            unit_of_measurement: 'A'
+        solaredge_ac_current_phase_c:
+            friendly_name: "AC Current Phase C"
+            value_template: "{{ state_attr('sensor.solaredge_modbus', 'ac_current_phase_c') }}"
+            unit_of_measurement: 'A'
+        solaredge_ac_voltage_phase_ab:
+            friendly_name: "SolarEdge AC Output Voltage (A-B)"
+            value_template: "{{ state_attr('sensor.solaredge_modbus', 'ac_voltage_phase_ab') }}"
+            unit_of_measurement: 'V'
+        solaredge_ac_current_voltage_a:
+            friendly_name: "AC Voltage Phase A"
+            value_template: "{{ state_attr('sensor.solaredge_modbus', 'ac_voltage_phase_a') }}"
+            unit_of_measurement: 'V'
+        solaredge_ac_current_voltage_b:
+            friendly_name: "AC Voltage Phase B"
+            value_template: "{{ state_attr('sensor.solaredge_modbus', 'ac_voltage_phase_b') }}"
+            unit_of_measurement: 'V'
+        solaredge_ac_current_voltage_c:
+            friendly_name: "AC Voltage Phase C"
+            value_template: "{{ state_attr('sensor.solaredge_modbus', 'ac_voltage_phase_c') }}"
+            unit_of_measurement: 'V'
+        solaredge_ac_power_output:
+            friendly_name: "AC Power Output"
+            value_template: "{{ state_attr('sensor.solaredge_modbus', 'ac_power_output') }}"
+            unit_of_measurement: 'W'
+        solaredge_dc_current:
+            friendly_name: "DC Current"
+            value_template: "{{ state_attr('sensor.solaredge_modbus', 'dc_current') }}"
+            unit_of_measurement: 'A'
+        solaredge_dc_voltage:
+            friendly_name: "DC Voltage"
+            value_template: "{{ state_attr('sensor.solaredge_modbus', 'dc_voltage') }}"
+            unit_of_measurement: 'V'
+        solaredge_dc_power_input:
+            friendly_name: "DC Power Input"
+            value_template: "{{ state_attr('sensor.solaredge_modbus', 'dc_power_input') }}"
+            unit_of_measurement: 'W'
+        solaredge_heatsink_temp:
+            friendly_name: "Inverter Heat sink Temperature"
+            value_template: "{{ state_attr('sensor.solaredge_modbus', 'heat_sink_temperature') }}"
+            unit_of_measurement: '°C'
+        solaredge_inverter_efficiency:
+            friendly_name: "Inverter efficiency"
+            value_template: "{{ state_attr('sensor.solaredge_modbus', 'computed_inverter_efficiency') }}"
+            unit_of_measurement: '%'
+        solaredge_ac_frequency:
+            friendly_name: "AC Frequency"
+            value_template: "{{ state_attr('sensor.solaredge_modbus', 'ac_frequency') }}"
+            unit_of_measurement: 'Hz'
+        solaredge_lifetime_production:
+            friendly_name: "Lifetime production"
+            value_template: "{{ (state_attr('sensor.solaredge_modbus', 'ac_lifetimeproduction') / 1000.0) | round(2) }}"
+            unit_of_measurement: 'kWh'
+        solaredge_status:
+            friendly_name: "SolarEdge Status"
+            value_template: >-
+              {% if state_attr('sensor.solaredge_modbus', 'status') == 1 %}
+                Off
+              {% elif state_attr('sensor.solaredge_modbus', 'status') == 2 %}
+                Sleep
+              {% elif state_attr('sensor.solaredge_modbus', 'status') == 3 %}
+                Wake-Up
+              {% elif state_attr('sensor.solaredge_modbus', 'status') == 4 %}
+                Working
+              {% elif state_attr('sensor.solaredge_modbus', 'status') == 5 %}
+                Throttled
+              {% elif state_attr('sensor.solaredge_modbus', 'status') == 6 %}
+                Shut-Down
+              {% elif state_attr('sensor.solaredge_modbus', 'status') == 7 %}
+                Fault
+              {% elif state_attr('sensor.solaredge_modbus', 'status') == 8 %}
+                Maintenance
+              {% else %}
+                Unknown
+              {% endif %}
+
   - platform: amberelectric
     postcode: "3156"
   - platform: asuswrt
