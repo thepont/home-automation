@@ -41,7 +41,7 @@ frontend:
   themes: !include themes.yaml
 lovelace:
   resources:
-  - platform: spotify
+    - platform: spotify
     - url: /local/mini-media-player-bundle.js?v=1.11.0
       type: module
 mqtt:
